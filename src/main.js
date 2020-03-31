@@ -1,5 +1,7 @@
 "use strict";
 
+const TASK_COUNT = 3;
+
 /**
  * Create template menu site
  * @return {string} html template menu
@@ -408,3 +410,22 @@ const createSiteLoadMoreBtnTemplate = () => {
 const render = (constainer, template, place) => {
   constainer.insertAdjacentHTML(place, template);
 };
+
+const saitMainElement = document.querySelector(`.main`);
+const saitHeaderElement = document.querySelector(`.main__control`);
+
+render(saitHeaderElement, createSiteMenuTemplate(), `beforeend`);
+render(saitMainElement, createSiteFilterTemplate(), `beforeend`);
+render(saitMainElement, createSiteContentTemplate(), `beforeend`);
+
+const boardElement = document.querySelector(`.board`);
+const taskListElement = document.querySelector(`.board__tasks`);
+
+render(boardElement, createSiteSortTemplate(), `afterbegin`);
+render(taskListElement, createTaskEditTemplate(), `beforeend`);
+
+for (let i = 0; i < TASK_COUNT; i++) {
+  render(taskListElement, createTaskTemplate(), `beforeend`);
+}
+
+render(boardElement, createSiteLoadMoreBtnTemplate(), `beforeend`);
