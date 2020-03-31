@@ -105,3 +105,15 @@ const createSiteFilterTemplate = () => {
   );
 };
 
+/**
+ * Create template content site
+ * @return {string} html template content
+ */
+const createSiteContentTemplate = () => {
+  return (
+    `<section class="board container">
+      <div class="board__tasks">
+      </div>
+    </section>`
+  );
+};
