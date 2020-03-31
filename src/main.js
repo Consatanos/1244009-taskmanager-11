@@ -43,7 +43,7 @@ const createSiteMenuTemplate = () => {
  * Create template filters site
  * @return {string} html template filters
  */
-const createSiteFilterTemplate = () => {
+const createFilterTemplate = () => {
   return (
     `<section class="main__filter filter container">
       <input
@@ -124,7 +124,7 @@ const createSiteContentTemplate = () => {
  * Create template sort site
  * @return {string} html template sort
  */
-const createSiteSortTemplate = () => {
+const createSortTemplate = () => {
   return (
     `<div class="board__filter-list">
       <a href="#" class="board__filter" data-sort-type="default">SORT BY DEFAULT</a>
@@ -395,7 +395,7 @@ const createTaskEditTemplate = () => {
  * Create template load-more btn
  * @return {string} html template load-more btn
  */
-const createSiteLoadMoreBtnTemplate = () => {
+const createLoadMoreBtnTemplate = () => {
   return (
     `<button class="load-more" type="button">load more</button>`
   );
@@ -404,8 +404,8 @@ const createSiteLoadMoreBtnTemplate = () => {
 /**
  * Render element to DOM
  * @param {*} constainer
- * @param {*} template
- * @param {*} place
+ * @param {string} template
+ * @param {string} place
  */
 const render = (constainer, template, place) => {
   constainer.insertAdjacentHTML(place, template);
@@ -415,17 +415,17 @@ const saitMainElement = document.querySelector(`.main`);
 const saitHeaderElement = document.querySelector(`.main__control`);
 
 render(saitHeaderElement, createSiteMenuTemplate(), `beforeend`);
-render(saitMainElement, createSiteFilterTemplate(), `beforeend`);
+render(saitMainElement, createFilterTemplate(), `beforeend`);
 render(saitMainElement, createSiteContentTemplate(), `beforeend`);
 
 const boardElement = document.querySelector(`.board`);
 const taskListElement = document.querySelector(`.board__tasks`);
 
-render(boardElement, createSiteSortTemplate(), `afterbegin`);
+render(boardElement, createSortTemplate(), `afterbegin`);
 render(taskListElement, createTaskEditTemplate(), `beforeend`);
 
 for (let i = 0; i < TASK_COUNT; i++) {
   render(taskListElement, createTaskTemplate(), `beforeend`);
 }
 
-render(boardElement, createSiteLoadMoreBtnTemplate(), `beforeend`);
+render(boardElement, createLoadMoreBtnTemplate(), `beforeend`);
