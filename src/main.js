@@ -398,3 +398,13 @@ const createSiteLoadMoreBtnTemplate = () => {
     `<button class="load-more" type="button">load more</button>`
   );
 };
+
+/**
+ * Render element to DOM
+ * @param {*} constainer
+ * @param {*} template
+ * @param {*} place
+ */
+const render = (constainer, template, place) => {
+  constainer.insertAdjacentHTML(place, template);
+};
