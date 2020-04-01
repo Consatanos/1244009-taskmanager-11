@@ -403,29 +403,29 @@ const createLoadMoreBtnTemplate = () => {
 
 /**
  * Render element to DOM
- * @param {*} constainer
+ * @param {*} container
  * @param {string} template
  * @param {string} place
  */
-const render = (constainer, template, place) => {
-  constainer.insertAdjacentHTML(place, template);
+const render = (container, template, place) => {
+  container.insertAdjacentHTML(place, template);
 };
 
-const saitMainElement = document.querySelector(`.main`);
-const saitHeaderElement = document.querySelector(`.main__control`);
+const mainElement = document.querySelector(`.main`);
+const headerElement = document.querySelector(`.main__control`);
 
-render(saitHeaderElement, createSiteMenuTemplate(), `beforeend`);
-render(saitMainElement, createFilterTemplate(), `beforeend`);
-render(saitMainElement, createSiteContentTemplate(), `beforeend`);
+render(headerElement, createSiteMenuTemplate(), `beforeEnd`);
+render(mainElement, createFilterTemplate(), `beforeEnd`);
+render(mainElement, createSiteContentTemplate(), `beforeEnd`);
 
 const boardElement = document.querySelector(`.board`);
 const taskListElement = document.querySelector(`.board__tasks`);
 
-render(boardElement, createSortTemplate(), `afterbegin`);
-render(taskListElement, createTaskEditTemplate(), `beforeend`);
+render(boardElement, createSortTemplate(), `afterBegin`);
+render(taskListElement, createTaskEditTemplate(), `beforeEnd`);
 
 for (let i = 0; i < TASK_COUNT; i++) {
-  render(taskListElement, createTaskTemplate(), `beforeend`);
+  render(taskListElement, createTaskTemplate(), `beforeEnd`);
 }
 
-render(boardElement, createLoadMoreBtnTemplate(), `beforeend`);
+render(boardElement, createLoadMoreBtnTemplate(), `beforeEnd`);
