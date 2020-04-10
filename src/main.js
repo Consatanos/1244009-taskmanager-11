@@ -22,6 +22,10 @@ import {
   loadMoreBtnTemplate
 } from './components/load-more-btn-template';
 
+import {
+  generateFilters
+} from './mock/filters';
+
 const TASK_COUNT = 3;
 
 /**
@@ -37,8 +41,10 @@ const render = (container, template, place) => {
 const mainElement = document.querySelector(`.main`);
 const headerElement = document.querySelector(`.main__control`);
 
+const filters = generateFilters();
+
 render(headerElement, siteMenuTemplate(), `beforeEnd`);
-render(mainElement, filterTemplate(), `beforeEnd`);
+render(mainElement, filterTemplate(filters), `beforeEnd`);
 render(mainElement, siteContentTemplate(), `beforeEnd`);
 
 const boardElement = document.querySelector(`.board`);
