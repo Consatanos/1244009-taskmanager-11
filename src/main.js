@@ -32,6 +32,7 @@ import {
 
 const TASK_COUNT = 22;
 const SHOWING_TASKS_COUNT_ON_START = 8;
+const SHOWING_TASKS_COUNT_BY_BUTTON = 8;
 
 /**
  * Render element to DOM
@@ -65,3 +66,17 @@ tasks.slice(1, showingTasksCount)
   .forEach((task) => render(taskListElement, taskTemplate(task), `beforeEnd`));
 
 render(boardElement, loadMoreBtnTemplate(), `beforeEnd`);
+
+const loadMoreButton = boardElement.querySelector(`.load-more`);
+
+loadMoreButton.addEventListener(`click`, () => {
+  const prevTasksCount = showingTasksCount;
+  showingTasksCount = showingTasksCount + SHOWING_TASKS_COUNT_BY_BUTTON;
+
+  tasks.slice(prevTasksCount, showingTasksCount)
+    .forEach((task) => render(taskListElement, taskTemplate(task), `beforeend`));
+
+  if (showingTasksCount >= tasks.length) {
+    loadMoreButton.remove();
+  }
+});
