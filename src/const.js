@@ -1,17 +1,17 @@
 /**
  * Array colors
  */
-const COLORS = [`black`, `yellow`, `blue`, `green`, `pink`];
+export const COLORS = [`black`, `yellow`, `blue`, `green`, `pink`];
 
 /**
  * Array days of week
  */
-const DAYS = [`mo`, `tu`, `we`, `th`, `fr`, `sa`, `su`];
+export const DAYS = [`mo`, `tu`, `we`, `th`, `fr`, `sa`, `su`];
 
 /**
  * Array month of year
  */
-const MONTH_NAMES = [
+export const MONTH_NAMES = [
   `January`,
   `February`,
   `March`,
@@ -25,10 +25,3 @@ const MONTH_NAMES = [
   `November`,
   `December`,
 ];
-
-
-export {
-  COLORS,
-  DAYS,
-  MONTH_NAMES
-};
