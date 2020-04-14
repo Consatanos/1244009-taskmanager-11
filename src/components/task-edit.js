@@ -4,6 +4,7 @@ import {
   MONTH_NAMES
 } from '../const';
 import {
+  createElement,
   formatTime
 } from '../utils';
 
@@ -63,11 +64,11 @@ const createRepeatingDaysMarkup = (days, repeatingDays) => {
 };
 
 /**
- * Create template task-edit
+ * Create task-edit markup
  * @param {object} task
- * @return {string} html template task-edit
+ * @return {string} markup task-edit
  */
-const taskEditTemplate = (task) => {
+const createTaskEditMarkup = (task) => {
   const {
     description,
     dueDate,
@@ -166,6 +167,25 @@ const taskEditTemplate = (task) => {
   );
 };
 
-export {
-  taskEditTemplate
-};
+export default class TaskEdit {
+  constructor(task) {
+    this._task = task;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createTaskEditMarkup(this._task);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}

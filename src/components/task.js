@@ -2,15 +2,16 @@ import {
   MONTH_NAMES
 } from '../const';
 import {
+  createElement,
   formatTime
 } from '../utils';
 
 /**
- * Create template task
+ * Create task markup
  * @param {object} task
- * @return {string} html template task
+ * @return {string} markup task
  */
-const taskTemplate = (task) => {
+const createTaskMarkup = (task) => {
   const {
     description,
     dueDate,
@@ -78,6 +79,25 @@ const taskTemplate = (task) => {
   );
 };
 
-export {
-  taskTemplate
-};
+export default class Task {
+  constructor(task) {
+    this._task = task;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createTaskMarkup(this._task);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
