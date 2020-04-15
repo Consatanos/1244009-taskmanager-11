@@ -1,8 +1,12 @@
+import {
+  createElement
+} from "../utils.js";
+
 /**
- * Create template filter item
+ * Create filter item markup
  * @param {array} filter
  * @param {number} isChecked
- * @return {string} html template filter item
+ * @return {string} markup filter item
  */
 const createFilterMarkup = (filter, isChecked) => {
   const {
@@ -24,11 +28,11 @@ const createFilterMarkup = (filter, isChecked) => {
 };
 
 /**
- * Create template filters site
+ * Create filters markup
  * @param {array} filters
- * @return {string} html template filters
+ * @return {string} markup filters
  */
-const filterTemplate = (filters) => {
+const createFiltersMarkup = (filters) => {
   const filtersMarkup = filters.map((item, i) => createFilterMarkup(item, i === 0)).join(`\n`);
   return (
     `<section class="main__filter filter container">
@@ -37,6 +41,25 @@ const filterTemplate = (filters) => {
   );
 };
 
-export {
-  filterTemplate
-};
+export default class Filter {
+  constructor(filters) {
+    this._filters = filters;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createFiltersMarkup(this._filters);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}

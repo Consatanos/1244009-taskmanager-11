@@ -1,8 +1,12 @@
+import {
+  createElement
+} from '../utils';
+
 /**
- * Create template menu site
- * @return {string} html template menu
+ * Create site menu markup
+ * @return {string} markup site menu
  */
-const siteMenuTemplate = () => {
+const createSiteMenuMarkup = () => {
   return (
     `<section class="control__btn-wrap">
       <input
@@ -35,6 +39,24 @@ const siteMenuTemplate = () => {
   );
 };
 
-export {
-  siteMenuTemplate
-};
+export default class SiteMenu {
+  constructor() {
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createSiteMenuMarkup();
+  }
+
+  getElement() {
+    if (this._element) {
+      this._element = createElement(this.getElement());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
