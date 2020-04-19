@@ -1,15 +1,15 @@
+import AbstractComponent from './abstract-component';
 import {
   MONTH_NAMES
 } from '../const';
 import {
-  createElement,
   formatTime
-} from '../utils';
+} from '../utils/common';
 
 /**
  * Create task markup
- * @param {object} task
- * @return {string} markup task
+ * @param {Object} task
+ * @return {String} markup task
  */
 const createTaskMarkup = (task) => {
   const {
@@ -79,25 +79,19 @@ const createTaskMarkup = (task) => {
   );
 };
 
-export default class Task {
+export default class Task extends AbstractComponent {
   constructor(task) {
+    super();
+
     this._task = task;
-    this._element = null;
   }
 
   getTemplate() {
     return createTaskMarkup(this._task);
   }
 
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
+  setEditButtonClickHandler(handler) {
+    this.getElement().querySelector(`.card__btn--edit`)
+      .addEventListener(`click`, handler);
   }
 }

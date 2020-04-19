@@ -1,12 +1,10 @@
-import {
-  createElement
-} from "../utils.js";
+import AbstractComponent from './abstract-component';
 
 /**
  * Create filter item markup
- * @param {array} filter
- * @param {number} isChecked
- * @return {string} markup filter item
+ * @param {Array} filter
+ * @param {Number} isChecked
+ * @return {String} markup filter item
  */
 const createFilterMarkup = (filter, isChecked) => {
   const {
@@ -29,8 +27,8 @@ const createFilterMarkup = (filter, isChecked) => {
 
 /**
  * Create filters markup
- * @param {array} filters
- * @return {string} markup filters
+ * @param {Array} filters
+ * @return {String} markup filters
  */
 const createFiltersMarkup = (filters) => {
   const filtersMarkup = filters.map((item, i) => createFilterMarkup(item, i === 0)).join(`\n`);
@@ -41,25 +39,14 @@ const createFiltersMarkup = (filters) => {
   );
 };
 
-export default class Filter {
+export default class Filter extends AbstractComponent {
   constructor(filters) {
+    super();
+
     this._filters = filters;
-    this._element = null;
   }
 
   getTemplate() {
     return createFiltersMarkup(this._filters);
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }

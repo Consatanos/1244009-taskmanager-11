@@ -1,10 +1,8 @@
-import {
-  createElement
-} from "../utils.js";
+import AbstractComponent from './abstract-component';
 
 /**
  * Create content site markup
- * @return {string} markup content site
+ * @return {String} markup content site
  */
 const createContentSiteMarkup = () => {
   return (
@@ -13,24 +11,8 @@ const createContentSiteMarkup = () => {
   );
 };
 
-export default class Board {
-  constructor() {
-    this._element = null;
-  }
-
+export default class Board extends AbstractComponent {
   getTemplate() {
     return createContentSiteMarkup();
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }

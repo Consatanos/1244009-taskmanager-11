@@ -1,18 +1,18 @@
+import AbstractComponent from './abstract-component';
 import {
   COLORS,
   DAYS,
   MONTH_NAMES
 } from '../const';
 import {
-  createElement,
   formatTime
-} from '../utils';
+} from '../utils/common';
 
 /**
  * Create colors markup
- * @param {array} colors
- * @param {object} currentColor
- * @return {string} html template colors
+ * @param {Array} colors
+ * @param {Object} currentColor
+ * @return {String} html template colors
  */
 const createColorsMarkup = (colors, currentColor) => {
   return colors
@@ -38,9 +38,9 @@ const createColorsMarkup = (colors, currentColor) => {
 
 /**
  * Create repeating days markup
- * @param {array} days
- * @param {object} repeatingDays
- * @return {string} html template repeating days
+ * @param {Array} days
+ * @param {Object} repeatingDays
+ * @return {String} html template repeating days
  */
 const createRepeatingDaysMarkup = (days, repeatingDays) => {
   return days
@@ -65,8 +65,8 @@ const createRepeatingDaysMarkup = (days, repeatingDays) => {
 
 /**
  * Create task-edit markup
- * @param {object} task
- * @return {string} markup task-edit
+ * @param {Object} task
+ * @return {String} markup task-edit
  */
 const createTaskEditMarkup = (task) => {
   const {
@@ -167,25 +167,19 @@ const createTaskEditMarkup = (task) => {
   );
 };
 
-export default class TaskEdit {
+export default class TaskEdit extends AbstractComponent {
   constructor(task) {
+    super();
+
     this._task = task;
-    this._element = null;
   }
 
   getTemplate() {
     return createTaskEditMarkup(this._task);
   }
 
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
+  setSubmitHandler(handler) {
+    this.getElement().querySelector(`form`)
+      .addEventListener(`submit`, handler);
   }
 }

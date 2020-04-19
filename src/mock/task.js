@@ -26,8 +26,8 @@ const DefaultRepeatingDays = {
 
 /**
  * Generate random array item
- * @param {array} array
- * @return {array}
+ * @param {Array} array
+ * @return {Array}
  */
 const getRandomArrayItem = (array) => {
   const randomIndex = getRandomIntegerNumber(0, array.length);
@@ -37,9 +37,9 @@ const getRandomArrayItem = (array) => {
 
 /**
  * Generate random number
- * @param {number} min
- * @param {numver} max
- * @return {number} random number
+ * @param {Number} min
+ * @param {Number} max
+ * @return {Number} random number
  */
 const getRandomIntegerNumber = (min, max) => {
   return min + Math.floor(Math.random() * (max - min));
@@ -47,7 +47,7 @@ const getRandomIntegerNumber = (min, max) => {
 
 /**
  * Generate random dates
- * @return {array} array of dates
+ * @return {Array} array of dates
  */
 const getRandomDate = () => {
   const targetDate = new Date();
@@ -61,7 +61,7 @@ const getRandomDate = () => {
 
 /**
  * Generate random repeating days
- * @return {array} array of repeating days
+ * @return {Array} array of repeating days
  */
 const generateRepeatingDays = () => {
   return Object.assign({}, DefaultRepeatingDays, {
@@ -71,7 +71,7 @@ const generateRepeatingDays = () => {
 
 /**
  * Generate task
- * @return {object}
+ * @return {Object}
  */
 const generateTask = () => {
   const dueDate = Math.random() > 0.5 ? null : getRandomDate();
@@ -88,8 +88,8 @@ const generateTask = () => {
 
 /**
  * Genearate tasks array
- * @param {number} count
- * @return {array}
+ * @param {Number} count
+ * @return {Array}
  */
 const generateTasks = (count) => {
   return new Array(count)

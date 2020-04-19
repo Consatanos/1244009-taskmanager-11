@@ -5,7 +5,7 @@ const filterNames = [`all`, `overdue`, `today`, `favorites`, `repeating`, `archi
 
 /**
  * Generate filters array
- * @return {array} array of filters
+ * @return {Array} array of filters
  */
 const generateFilters = () => {
   return filterNames.map((item) => {
